@@ -1,7 +1,7 @@
 <script lang="ts">
   import { enhance } from '$app/forms';
-  import { toastStore } from '$lib/components/toast';
-  import Toast from '$lib/components/Toast.svelte';
+  import { toastStore } from '$lib/components/utils/toast';
+  import Toast from '$lib/components/utils/Toast.svelte';
   import type { CaseFormData } from '$lib/types/forms';
   
   let { form }: { form: CaseFormData | null } = $props();

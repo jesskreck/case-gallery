@@ -1,11 +1,11 @@
 <script lang="ts">
     import { onMount, onDestroy } from 'svelte';
     import type { PageData } from './$types';
-    import StatusBadge from '$lib/components/StatusBadge.svelte';
-    import MetaSection from '$lib/components/tabs/MetaSection.svelte';
-    import LogSection from '$lib/components/tabs/LogSection.svelte';
-    import SnapshotSection from '$lib/components/tabs/SnapshotSection.svelte';
-    import DecisionSection from '$lib/components/tabs/DecisionSection.svelte';
+    import StatusBadge from '$lib/components/CaseGallery/StatusBadge.svelte';
+    import MetaSection from '$lib/components/CaseGallery/tabs/MetaSection.svelte';
+    import LogSection from '$lib/components/CaseGallery/tabs/LogSection.svelte';
+    import SnapshotSection from '$lib/components/CaseGallery/tabs/SnapshotSection.svelte';
+    import DecisionSection from '$lib/components/CaseGallery/tabs/DecisionSection.svelte';
     
     let {data} : {data: PageData} = $props();
     
@@ -18,9 +18,9 @@
     }
   </script>
   
-  <div class="container mx-auto py-8 px-4 md:px-6">
+  <div class="container bg-base-300 mx-auto py-8 px-4 md:px-6">
     <div class="mb-8">
-      <a href="/" class="btn btn-ghost btn-sm mb-4">
+      <a href="/" class="btn btn-sm mb-4">
         Zurück zur Galerie
       </a>
       
@@ -44,7 +44,9 @@
         </div>
       {/if}
       
-      <div class="tabs tabs-boxed mb-6">
+
+      <!-- REITER MIT TABS Meta, Logbuch, Snapshots, Entscheidungen -->
+      <div class="tabs tabs-border tabs-primary">
         <button 
           class="tab {activeTab === 'meta' ? 'tab-active' : ''}" 
           onclick={() => setActiveTab('meta')}
@@ -71,6 +73,7 @@
         </button>
       </div>
       
+      <!-- CONDITONAL RENDERING DER TABS WENN INHALT VORHANDEN -->
       <div class="mt-6">
         {#if activeTab === 'meta'}
           <div class="animate-fade-in">
